@@ -10,8 +10,9 @@ const TodoList = () => {
     const [emojiPicker, setEmojiPicker] = useState(false);
   
     const handleEmoji = (e) => {
+        console.log("ee",e);
       setEmoji(e.emoji);
-      emojiPicker(false);
+     setEmojiPicker(false);
     };
 
     const handleToDo = (e) => {
