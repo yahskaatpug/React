@@ -2,31 +2,43 @@ import { useState } from "react"
 import EmojiPicker from 'emoji-picker-react';
 
 const TodoList = () => {
-    const [todoTitle, seTodoTitle] = useState("");
+    const [todo, seTodo] = useState({
+        title:""
+    });
+
 
     const [todoList, setTodoList] = useState([]);
 
-    const [emoji, setEmoji] = useState("");
-    const [emojiPicker, setEmojiPicker] = useState(false);
+    const [emojiPickerIndex, setEmojiPickerIndex] = useState(null);
   
-    const handleEmoji = (e) => {
-        console.log("ee",e);
-      setEmoji(e.emoji);
-     setEmojiPicker(false);
+    const handleEmoji = (e, index) => {
+        const updatedTodoList = [...todoList];
+        updatedTodoList[index].emoji = e.emoji;
+        setTodoList(updatedTodoList);
+        setEmojiPickerIndex(null);
     };
 
     const handleToDo = (e) => {
         const { value, name } = e.target;
-        seTodoTitle(value)
+        seTodo({title:value})
     }
 
     const onAddTodo = () => {
-        if (!todoTitle) {
+        console.log("todo", todo);
+        if (!todo.title) {
             return;
         }
 
-        setTodoList((prevState) => [...prevState, todoTitle]);
-        seTodoTitle("");
+        setTodoList((prevState) => [...prevState,{title:todo.title, emoji:""}]);
+        console.log("todoList", todoList);
+        seTodo({title:""});
+    };
+
+    const toggleEmojiPicker = (index) => {
+        console.log("index", index);
+        console.log("emojiPickerIndex1", emojiPickerIndex);
+        setEmojiPickerIndex(emojiPickerIndex === index ? null : index);
+        console.log("emojiPickerIndex2", emojiPickerIndex);
     };
 
 
@@ -36,7 +48,7 @@ const TodoList = () => {
                 <p>Title</p>
                 <input
                     type="text"
-                    value={todoTitle}
+                    value={todo.title}
                     name="todoTitle"
                     placeholder="Enter tITLE"
                     onChange={handleToDo}
@@ -50,14 +62,14 @@ const TodoList = () => {
                 {todoList?.length > 0 ? (
                     <ul>
                         {todoList.map((item, index) => {
-                            return <li key={index}>{item}
-                                <button onClick={() => setEmojiPicker(!emojiPicker)}>
-                                    {emoji ? emoji : 'Add Emoji'}
+                            return <li key={index}>{item.title}
+                                <button onClick={() => toggleEmojiPicker(index)}>
+                                    {item.emoji ? item.emoji : 'Add Emoji'}
                                 </button>
 
-                                {emojiPicker && (
+                                {emojiPickerIndex === index && (
                                     <div>
-                                        <EmojiPicker onEmojiClick={handleEmoji} />
+                                        <EmojiPicker onEmojiClick={(e)=>handleEmoji(e,index)} />
                                     </div>
                                 )}
                             </li>;
