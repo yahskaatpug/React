@@ -92,7 +92,7 @@ const TodoList = () => {
                             return <li key={index}>
                                 {item.title}
                                 <button onClick={() => toggleEmojiPicker(index)}>
-                                    {item.emoji ? item.emoji : 'Add Emoji'}
+                                    {item.emoji ? item.emoji : '+'}
                                 </button>
 
                                 {emojiPickerIndex === index && (
