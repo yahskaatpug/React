@@ -68,6 +68,11 @@ const LoginForm = () => {
             setLoginFormError((prev) => ({ ...prev, password: true }));
         }
     }
+
+    const handleFocus =(e)=>{
+        setLoginFormError((prev) => ({ ...prev, [e.target.name]: false }));
+    }
+
     const inputForm = {
         width:"90%",
         height:"30px",
@@ -94,7 +99,7 @@ const LoginForm = () => {
         backgroundColor:"rgba(0, 0, 0, 0.7)",
         borderRadius:"8px",
         padding:"2rem",
-        width:"100%",
+        width:"350px",
         boxShadow:"0 4px 8px rgba(0,0,0,0.3)"
         }
 
@@ -105,7 +110,7 @@ const LoginForm = () => {
             <div style={container} className="form">
             <h1 style={{color:"#fff", textAlign:"left",fontSize:"24px", margin:"0 0.3rem 1.4rem"}}>Sign In</h1>
                 <div className="username">
-                    <input style={inputForm} name="username" type="text" value={loginForm.username} onBlur={(e) => handleBlur(e)} onChange={onInputChange} placeholder="Email or mobile number" />
+                    <input style={inputForm} name="username" type="text" value={loginForm.username} onFocus={handleFocus} onBlur={(e) => handleBlur(e)} onChange={onInputChange} placeholder="Email or mobile number" />
                     {loginFormError.username &&
                         <div style={{margin:"-20px 5px", display:"flex", alignItems:"center", padding:"10px", gap:"4px"}}><svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +132,7 @@ const LoginForm = () => {
                             <p style={{color:'red'}}><small>Please enter a valid email or phone number.</small></p></div>}
                 </div>
                 <div className="password">
-                    <input style={inputForm} name="password" type="password" value={loginForm.password} onBlur={(e) => handleBlur(e)} onChange={onInputChange} placeholder="Password" />
+                    <input style={inputForm} name="password" type="password" value={loginForm.password} onFocus={handleFocus} onBlur={(e) => handleBlur(e)} onChange={onInputChange} placeholder="Password" />
                     {loginFormError.password &&
                         <div style={{margin:"-20px 5px",display:"flex", alignItems:"center", padding:"10px", gap:"4px"}}><svg
                             xmlns="http://www.w3.org/2000/svg"
