@@ -18,6 +18,9 @@ import FuncComponent from './day-1/functionalComponent.jsx'
 import FuncMounting from './day-1/useEffect.jsx'
 import InputDataPersist from './day-1/task1.jsx'
 import OnlineStatus from './day-1/online-offline.jsx'
+import SideBarComponent from './day-1/test.jsx'
+import ParentCounter from './day-1/parentCounterProps.jsx'
+import ProductsTrial3 from './day-1/parent.jsx'
 
 createRoot(document.getElementById('root')).render(
   <>
@@ -34,6 +37,9 @@ createRoot(document.getElementById('root')).render(
     {/* <FuncComponent/> */}
     {/* <FuncMounting/> */}
     {/* <InputDataPersist/> */}
-    <OnlineStatus/>
+    {/* <OnlineStatus/> */}
+    {/* <SideBarComponent/> */}
+    {/* <ParentCounter/> */}
+    <ProductsTrial3/>
      </>,
 )
