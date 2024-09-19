@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ProductList3 from "./child";
 import { toast } from "react-toastify";
+import ProductList3 from "./todoChildComponentProp";
 
 const ProductsTrial3 = () => {
   const [products, setProducts] = useState(null);
@@ -22,20 +22,19 @@ const ProductsTrial3 = () => {
       });
   }, []);
 
-  const onDeleteProduct = (item ) => {
-     console.log("wowo: ",item);
+  const onDeleteProduct = (item) => {
+    // if
       setProducts((prev) => prev.filter((data) => data.id !== item.id));
-      console.log("wowo2");
       toast.success("Product deleted successfully");
-      setOpen(false);
-      //toast.warning("You have cancelled the deletion");
+      // else
+      toast.warning("You have cancelled the deletion");
     
   };
 
- const handleConfirmDelete = ()=>{
-    setOpen(true);
-    console.log("pppp", products);
- }
+//  const handleConfirmDelete = ()=>{
+//     setOpen(true);
+//     console.log("pppp", products);
+//  }
 
   console.log("Re-Render: ", products, isLoading);
   return (
@@ -43,12 +42,12 @@ const ProductsTrial3 = () => {
       <ProductList3
         loading={isLoading}
         data={products}
-        onRemove={handleConfirmDelete}
+        onRemove={onDeleteProduct}
         open={open}
-        onClose={() => setOpen(false)}
-        onConfirm={onDeleteProduct}
-        title="Confirm Delete"
-        message="Are you sure you want to delete this item?"
+        // onClose={() => setOpen(false)}
+        // onConfirm={onDeleteProduct}
+        // title="Confirm Delete"
+        // message="Are you sure you want to delete this item?"
       />
     </div>
   );

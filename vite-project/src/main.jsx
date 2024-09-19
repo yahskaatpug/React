@@ -20,7 +20,7 @@ import InputDataPersist from './day-1/task1.jsx'
 import OnlineStatus from './day-1/online-offline.jsx'
 import SideBarComponent from './day-1/test.jsx'
 import ParentCounter from './day-1/parentCounterProps.jsx'
-import ProductsTrial3 from './day-1/parent.jsx'
+import ProductsTrial3 from './day-1/toDoParentComponentProps.jsx'
 
 createRoot(document.getElementById('root')).render(
   <>
